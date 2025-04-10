@@ -3,18 +3,15 @@ package org.example.demo.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 
-
 @Entity
 @Table(name = "token_api_gu_project")
-@NamedQuery(
-		name = "User.findByUsername",
-		query = "SELECT u FROM TokenAPIGuProject u WHERE u.username = :username"
-)
-@NamedQuery(
-		name = "User.findByUsernameAndPassword",
-		query = "SELECT u FROM TokenAPIGuProject u WHERE u.username = :username AND u.password =:password"
-)
+@NamedQueries({
+		@NamedQuery(name = "User.findByUsername",
+				query = "SELECT u FROM TokenAPIGuProject u WHERE u.username = :username")
+})
 public class TokenAPIGuProject implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

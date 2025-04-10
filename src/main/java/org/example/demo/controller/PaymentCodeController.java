@@ -4,8 +4,12 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.example.demo.entity.TokenAPIGuProject;
 import org.example.demo.model.PhoenixBankPayoutPaymentCodes;
 import org.example.demo.service.BankPayoutPaymentService;
+import org.example.demo.service.GUTokenService;
+import org.example.demo.service.SelcomTempService;
 
 import java.util.List;
 
@@ -16,10 +20,21 @@ public class PaymentCodeController {
 
     @Inject
     private BankPayoutPaymentService bankPayoutPaymentService;
+    @Inject
+    private GUTokenService guTokenService;
+    @Inject
+    private SelcomTempService selcomTempService;
 
     @GET
+    @Path("/")
     public List<PhoenixBankPayoutPaymentCodes> getAllProducts() {
         return bankPayoutPaymentService.findAll();
+    }
+
+    @GET
+    @Path("/tokens")
+    public List<TokenAPIGuProject> getAllTokens() {
+        return guTokenService.findAll();
     }
 
     @GET

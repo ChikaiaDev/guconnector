@@ -5,7 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.example.demo.entity.TokenAPIGuProject;
-import org.example.demo.repository.GUTokenInterface;
+//import org.example.demo.repository.GUTokenInterface;
 import org.example.demo.service.GUTokenService;
 
 import java.util.Base64;

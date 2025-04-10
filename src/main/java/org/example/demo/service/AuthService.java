@@ -4,15 +4,22 @@ import org.example.demo.config.SimpleJwtUtil;
 import org.example.demo.entity.TokenAPIGuProject;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.json.JsonObject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.Base64;
+import java.util.List;
 
 @Stateless
 public class AuthService {
 
     @PersistenceContext
     private EntityManager em;
+
+    @Inject
+    private GUTokenService guTokenService;
 
     public String registerUser(String username, String password) {
         if (username == null || username.trim().isEmpty()) {
@@ -49,8 +56,26 @@ public class AuthService {
 
     }
 
-    public boolean validateToken(String token) {
-        return ValidateTokenService.validateToken(token);
+    public Boolean validateToken(String token) {
+        boolean validToken = false;
+        byte [] decryptedToken = Base64.getDecoder().decode(token);
+        String  decryptedAuth = new String(decryptedToken);
+
+        String [] auth = decryptedAuth.split(":");
+
+        System.out.println(auth[0]);
+        System.out.println(auth[1]);
+
+
+        List<TokenAPIGuProject> tokenLists = guTokenService.findAll();
+
+        for(TokenAPIGuProject guProject : tokenLists){
+            if(guProject.getUsername().equalsIgnoreCase(auth[0]) && guProject.getPassword().equalsIgnoreCase(auth[1])){
+                validToken = true;
+                break;
+            }
+        }
+        return validToken;
     }
 
     public String getUsernameFromToken(String token) {
