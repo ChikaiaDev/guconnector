@@ -9,7 +9,6 @@ import org.example.demo.entity.TokenAPIGuProject;
 import org.example.demo.model.PhoenixBankPayoutPaymentCodes;
 import org.example.demo.service.BankPayoutPaymentService;
 import org.example.demo.service.GUTokenService;
-import org.example.demo.service.SelcomTempService;
 
 import java.util.List;
 
@@ -22,8 +21,6 @@ public class PaymentCodeController {
     private BankPayoutPaymentService bankPayoutPaymentService;
     @Inject
     private GUTokenService guTokenService;
-    @Inject
-    private SelcomTempService selcomTempService;
 
     @GET
     @Path("/")

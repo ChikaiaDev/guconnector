@@ -1,11 +1,12 @@
 package org.example.demo.service;
 
+import com.google.gson.JsonObject;
 import org.example.demo.config.SimpleJwtUtil;
 import org.example.demo.entity.TokenAPIGuProject;
+import org.example.demo.util.HttpStatus;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.json.JsonObject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -56,26 +57,44 @@ public class AuthService {
 
     }
 
-    public Boolean validateToken(String token) {
+    public JsonObject validateToken(String token) {
+        JsonObject response = new JsonObject();
         boolean validToken = false;
-        byte [] decryptedToken = Base64.getDecoder().decode(token);
-        String  decryptedAuth = new String(decryptedToken);
 
-        String [] auth = decryptedAuth.split(":");
+        response.addProperty("validity", validToken);
+        response.addProperty("error", "Invalid token");
+        response.addProperty("errorCode", HttpStatus.UNAUTHORIZED.getCode());
+        response.addProperty("message", "The token is either expired or invalid");
 
-        System.out.println(auth[0]);
-        System.out.println(auth[1]);
+        try {
 
 
-        List<TokenAPIGuProject> tokenLists = guTokenService.findAll();
+            byte[] decryptedToken = Base64.getDecoder().decode(token);
+            String decryptedAuth = new String(decryptedToken);
 
-        for(TokenAPIGuProject guProject : tokenLists){
-            if(guProject.getUsername().equalsIgnoreCase(auth[0]) && guProject.getPassword().equalsIgnoreCase(auth[1])){
-                validToken = true;
-                break;
+            String[] auth = decryptedAuth.split(":");
+
+            System.out.println(auth[0]);
+            System.out.println(auth[1]);
+
+
+            List<TokenAPIGuProject> tokenLists = guTokenService.findAll();
+
+            for (TokenAPIGuProject guProject : tokenLists) {
+                if (guProject.getUsername().equalsIgnoreCase(auth[0]) && guProject.getPassword().equalsIgnoreCase(auth[1])) {
+                    response.addProperty("validity", true);
+                    response.addProperty("error", "Valid token");
+                    response.addProperty("errorCode", HttpStatus.OK.getCode());
+                    response.addProperty("message", "Valid token");
+                    break;
+                }
             }
+            return response;
+        }catch (Exception e) {
+
+            return response;
         }
-        return validToken;
+
     }
 
     public String getUsernameFromToken(String token) {
