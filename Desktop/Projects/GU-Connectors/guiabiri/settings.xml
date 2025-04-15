@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+          xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--    <proxies>-->
+<!--        &lt;!&ndash; YOUR PROXY CONFIGURATION &ndash;&gt;-->
+<!--        &lt;!&ndash; FOR YOUR PRODUCTION SERVERS USAGE: &ndash;&gt;-->
+<!--        &lt;!&ndash;-->
+<!--        <proxy>-->
+<!--            <id>proxy-prod</id>-->
+<!--            <port>3128</port>-->
+<!--            <host>proxy-prod-scl.svc.meshcore.net</host>-->
+<!--            <nonProxyHosts>127.0.0.1|localhost|*.priv.atos.fr|*.meshcore.net</nonProxyHosts>-->
+<!--        </proxy>-->
+<!--        &ndash;&gt;-->
+<!--        &lt;!&ndash; ON YOUR LOCAL MACHINE: &ndash;&gt;-->
+<!--        &lt;!&ndash;-->
+<!--        <proxy>-->
+<!--            <id>proxy-local</id>-->
+<!--            <port>3128</port>-->
+<!--            <host>proxy-internet.localnet</host>-->
+<!--            <nonProxyHosts>127.0.0.1|localhost|*.priv.atos.fr|*.meshcore.net</nonProxyHosts>-->
+<!--        </proxy>-->
+<!--        &ndash;&gt;-->
+<!--    </proxies>-->
+
+<!--    <servers>-->
+
+<!--            <server>-->
+<!--                <id>guichet-unique-nexus-releases</id>-->
+<!--                <username>guichet-unique-TechnicalUser</username>-->
+<!--                <password>{foJOn7fEeH0HmSZvRR33TflkaA28Xd90MTW+ChGCT5W0JGyvAtB4VhgvfmCOUGuX}</password>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; Optimize authentication time when downloading.-->
+<!--                    Find out more: http://maven.apache.org/guides/mini/guide-http-settings.html#Example:_Using_Preemptive_Authentication &ndash;&gt;-->
+<!--                    <wagonProvider>httpclient</wagonProvider>-->
+<!--                    <httpConfiguration>-->
+<!--                        <all>-->
+<!--                            <usePreemptive>true</usePreemptive>-->
+<!--                        </all>-->
+<!--                    </httpConfiguration>-->
+<!--                </configuration>-->
+<!--            </server>-->
+<!--            <server>-->
+<!--                <id>guichet-unique-nexus-build-releases</id>-->
+<!--                <username>guichet-unique-TechnicalUser</username>-->
+<!--                <password>{foJOn7fEeH0HmSZvRR33TflkaA28Xd90MTW+ChGCT5W0JGyvAtB4VhgvfmCOUGuX}</password>-->
+<!--                <configuration>-->
+<!--                    <wagonProvider>httpclient</wagonProvider>-->
+<!--                    <httpConfiguration>-->
+<!--                        <all>-->
+<!--                            <usePreemptive>true</usePreemptive>-->
+<!--                        </all>-->
+<!--                    </httpConfiguration>-->
+<!--                </configuration>-->
+<!--            </server>-->
+<!--            <server>-->
+<!--                <id>guichet-unique-nexus-snapshots</id>-->
+<!--                <username>guichet-unique-TechnicalUser</username>-->
+<!--                <password>{foJOn7fEeH0HmSZvRR33TflkaA28Xd90MTW+ChGCT5W0JGyvAtB4VhgvfmCOUGuX}</password>-->
+<!--                <configuration>-->
+<!--                    <wagonProvider>httpclient</wagonProvider>-->
+<!--                    <httpConfiguration>-->
+<!--                        <all>-->
+<!--                            <usePreemptive>true</usePreemptive>-->
+<!--                        </all>-->
+<!--                    </httpConfiguration>-->
+<!--                </configuration>-->
+<!--            </server>-->
+<!--            <server>-->
+<!--                <id>guichet-unique-nexus-group</id>-->
+<!--                <username>guichet-unique-TechnicalUser</username>-->
+<!--                <password>{foJOn7fEeH0HmSZvRR33TflkaA28Xd90MTW+ChGCT5W0JGyvAtB4VhgvfmCOUGuX}</password>-->
+<!--                <configuration>-->
+<!--                    <wagonProvider>httpclient</wagonProvider>-->
+<!--                    <httpConfiguration>-->
+<!--                        <all>-->
+<!--                            <usePreemptive>true</usePreemptive>-->
+<!--                        </all>-->
+<!--                    </httpConfiguration>-->
+<!--                </configuration>-->
+<!--            </server>-->
+<!--    </servers>-->
+
+<!--        <mirrors>-->
+<!--            <mirror>-->
+<!--                <mirrorOf>*</mirrorOf>-->
+<!--                <url>https://nexus.kazan.myworldline.com/repository/guichet-unique-nexus-group</url>-->
+<!--                <id>guichet-unique-nexus-group</id>-->
+<!--            </mirror>-->
+<!--        </mirrors>-->
+
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <repositories>-->
+<!--                <repository>-->
+<!--                    &lt;!&ndash; Find out more: https://help.sonatype.com/repomanager3/formats/maven-repositories &ndash;&gt;-->
+<!--                    <id>central</id>-->
+<!--                    <url>http://central</url>-->
+<!--                </repository>-->
+<!--            </repositories>-->
+<!--            <pluginRepositories>-->
+<!--                <pluginRepository>-->
+<!--                    &lt;!&ndash; Find out more: https://help.sonatype.com/repomanager3/formats/maven-repositories &ndash;&gt;-->
+<!--                    <id>central</id>-->
+<!--                    <url>http://central</url>-->
+<!--                </pluginRepository>-->
+<!--            </pluginRepositories>-->
+<!--            <id>kazan-nexus</id>-->
+<!--            <properties>-->
+<!--                <scope>releases</scope>-->
+<!--                <repo-name>guichet-unique-nexus</repo-name>-->
+<!--                <releases-repo-url>https://nexus.kazan.myworldline.com/repository/guichet-unique-nexus-${scope}</releases-repo-url>-->
+<!--                <snapshots-repo-url>https://nexus.kazan.myworldline.com/repository/guichet-unique-nexus-snapshots</snapshots-repo-url>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--        <profile>-->
+<!--            <id>kazan-sonar</id>-->
+<!--            <properties>-->
+<!--                <sonar.host.url>https://kazan.myworldline.com/sonarqube</sonar.host.url>-->
+<!--                <sonar.login>{e+IGXz91SMsHo02SYAI24F1ObMGiq0qotoGYQvIC7E5u02rz1nTvNMT4mi1FqT9Dy9oWPCkGD0dtchPDDvisdw&#61;&#61;}</sonar.login>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--    </profiles>-->
+
+<!--        <activeProfiles>-->
+<!--            <activeProfile>kazan-nexus</activeProfile>-->
+<!--            <activeProfile>kazan-sonar</activeProfile>-->
+<!--        </activeProfiles>-->
+</settings>

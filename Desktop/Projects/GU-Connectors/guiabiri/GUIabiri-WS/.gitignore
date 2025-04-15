@@ -1,0 +1,8 @@
+/target/
+.settings/
+target
+target/*
+*.D_Store 
+.project
+bin/
+.classpath
