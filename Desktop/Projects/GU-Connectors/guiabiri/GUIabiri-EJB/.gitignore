@@ -1,9 +1,0 @@
-/target/
-/.classpath
-.settings/
-target
-target/*
-*.D_Store 
-.project
-bin/
-.classpath
